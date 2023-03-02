@@ -16,7 +16,7 @@ const SearchModal = ({ onClick }) => {
     async (e) => {
       if (e.target.value.trim().length !== 0) {
         const data = await sendRequest(
-          `${process.env.URL}users/search/${e.target.value}`,
+          `http://localhost:5000/users/search/${e.target.value}`,
           "GET",
           null,
           { Authorization: localStorage.getItem("token") }

@@ -40,7 +40,7 @@ const Nav = () => {
           }}
           src={user?.image}
           alt="profile"
-          style={{ borderRadius: "50%", height: "40px" }}
+          style={{ borderRadius: "50%", height: "40px", width: "40px" }}
         />
       </AnimatePresence>
       <ul className="d-flex align-items-center">

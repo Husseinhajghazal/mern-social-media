@@ -116,7 +116,7 @@ const addLike = async (req, res, next) => {
     return next(new NewError("Could not find post for this id.", 404));
   }
 
-  const liked = post.likedBy.filter((id) => id.toString() !== req.userId);
+  const liked = post.likedBy.filter((id) => id.toString() === req.userId);
 
   if (liked.length > 0) {
     return next(new NewError("You liked this post before.", 404));
@@ -150,7 +150,7 @@ const removeLike = async (req, res, next) => {
     return next(new NewError("Could not find post for this id.", 404));
   }
 
-  const liked = post.likedBy.filter((id) => id.toString !== req.userId);
+  const liked = post.likedBy.filter((id) => id.toString() === req.userId);
 
   if (liked.length !== 1) {
     return next(new NewError("You didn't like this post before.", 404));
@@ -214,7 +214,7 @@ const getHomePage = async (req, res, next) => {
   posts = posts.map((post) => {
     let liked = false;
 
-    const like = post.likedBy.filter((id) => id !== userId);
+    const like = post.likedBy.filter((id) => id.toString() === userId);
 
     if (like.length > 0) {
       liked = true;

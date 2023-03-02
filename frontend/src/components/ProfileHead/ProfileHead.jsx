@@ -10,13 +10,14 @@ const ProfileHead = () => {
   const { error, sendRequest, clearError } = useHttp();
 
   const profile = useSelector((state) => state.profile.profile);
+  const user = useSelector((state) => state.user.user);
 
   const [followed, setFollowed] = useState(profile?.followed);
 
   const follow = async () => {
     try {
       await sendRequest(
-        `${process.env.URL}users/${profile?._id}`,
+        `http://localhost:5000/users/${profile?._id}`,
         "POST",
         null,
         {
@@ -33,7 +34,7 @@ const ProfileHead = () => {
   const unfollow = async () => {
     try {
       await sendRequest(
-        `${process.env.URL}users/${profile?._id}`,
+        `http://localhost:5000/users/${profile?._id}`,
         "DELETE",
         null,
         {
@@ -65,11 +66,13 @@ const ProfileHead = () => {
       <img className="picture" src={profile?.image} alt="profile-pic" />
       <h1>{profile?.name}</h1>
       <p className="mb-2">{profile?.bio}</p>
-      {followed ? (
-        <Button type="button" text="unFollow" onClick={unfollow} />
-      ) : (
-        <Button type="button" text="Follow" onClick={follow} />
-      )}
+      {profile?._id !== user?._id ? (
+        followed ? (
+          <Button type="button" text="unFollow" onClick={unfollow} />
+        ) : (
+          <Button type="button" text="Follow" onClick={follow} />
+        )
+      ) : null}
       {error && <Error text={error} clearError={clearError} />}
     </motion.div>
   );

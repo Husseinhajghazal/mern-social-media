@@ -35,7 +35,7 @@ const Settings = () => {
     const Fetch = async () => {
       try {
         const data = await sendRequest(
-          `${process.env.URL}users/`,
+          `http://localhost:5000/users/`,
           "GET",
           null,
           {
@@ -105,7 +105,7 @@ const Settings = () => {
     try {
       setSubmiting(true);
       await sendRequest(
-        `${process.env.URL}users/`,
+        `http://localhost:5000/users/`,
         "PATCH",
         JSON.stringify({
           name: values.name,

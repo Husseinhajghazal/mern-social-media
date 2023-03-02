@@ -254,7 +254,9 @@ const getProfile = async (req, res, next) => {
   ids.push(profileId);
 
   let followed = false;
-  const existingFollow = user.followings.filter((id) => id !== profileId);
+  const existingFollow = user.followings.filter(
+    (id) => id.toString() === profileId
+  );
 
   if (existingFollow.length > 0) {
     followed = true;
@@ -310,7 +312,7 @@ const getProfile = async (req, res, next) => {
   const profilePosts = profile.posts.reverse().map((post) => {
     let liked = false;
 
-    const like = post.likedBy.filter((id) => id !== userId);
+    const like = post.likedBy.filter((id) => id.toString() === userId);
 
     if (like.length > 0) {
       liked = true;

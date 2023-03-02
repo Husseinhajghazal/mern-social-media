@@ -38,7 +38,7 @@ const LoginForm = ({ changeMode }) => {
   const submitHandler = async (values) => {
     try {
       const data = await sendRequest(
-        `${process.env.URL}users/login`,
+        `http://localhost:5000/users/login`,
         "POST",
         JSON.stringify({
           email: values.email,

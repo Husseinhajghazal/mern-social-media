@@ -21,7 +21,7 @@ const PostItem = ({ post }) => {
   const addLike = async () => {
     try {
       await sendRequest(
-        `${process.env.URL}posts/like/${post?._id}`,
+        `http://localhost:5000/posts/like/${post?._id}`,
         "POST",
         null,
         {
@@ -38,7 +38,7 @@ const PostItem = ({ post }) => {
   const removeLike = async () => {
     try {
       await sendRequest(
-        `${process.env.URL}posts/like/${post?._id}`,
+        `http://localhost:5000/posts/like/${post?._id}`,
         "DELETE",
         null,
         {
@@ -55,7 +55,7 @@ const PostItem = ({ post }) => {
   const deletePost = async () => {
     try {
       await sendRequest(
-        `${process.env.URL}posts/${post?._id}`,
+        `http://localhost:5000/posts/${post?._id}`,
         "DELETE",
         null,
         {
@@ -81,7 +81,12 @@ const PostItem = ({ post }) => {
           }}
           src={post?.creatorImage}
           alt="profile"
-          style={{ borderRadius: "50%", height: "40px", marginRight: "10px" }}
+          style={{
+            borderRadius: "50%",
+            height: "40px",
+            width: "40px",
+            marginRight: "10px",
+          }}
         />
         <h6>{post?.creatorName}</h6>
       </div>

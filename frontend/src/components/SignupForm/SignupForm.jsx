@@ -73,7 +73,7 @@ const SignupForm = ({ changeMode }) => {
         fd.append(value, values[value]);
       }
       const data = await sendRequest(
-        `${process.env.URL}users/signup`,
+        `http://localhost:5000/users/signup`,
         "POST",
         fd
       );

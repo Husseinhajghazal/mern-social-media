@@ -19,7 +19,7 @@ const Home = () => {
     const Fetch = async () => {
       try {
         const data = await sendRequest(
-          `${process.env.URL}posts/`,
+          `http://localhost:5000/posts/`,
           "GET",
           null,
           {

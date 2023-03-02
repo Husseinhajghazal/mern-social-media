@@ -63,7 +63,7 @@ const SharePostForm = ({ onClick }) => {
       for (let value in values) {
         fd.append(value, values[value]);
       }
-      await sendRequest(`${process.env.URL}posts/`, "POST", fd, {
+      await sendRequest(`http://localhost:5000/posts/`, "POST", fd, {
         Authorization: localStorage.getItem("token"),
       });
 

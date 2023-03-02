@@ -23,7 +23,7 @@ const Profile = () => {
     const Fetch = async () => {
       try {
         const data = await sendRequest(
-          `${process.env.URL}users/${uid}`,
+          `http://localhost:5000/users/${uid}`,
           "GET",
           null,
           {

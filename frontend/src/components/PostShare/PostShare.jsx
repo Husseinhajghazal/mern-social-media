@@ -24,7 +24,7 @@ const PostShare = () => {
           }}
           src={user?.image}
           alt="profile"
-          style={{ borderRadius: "50%", height: "40px" }}
+          style={{ borderRadius: "50%", height: "40px", width: "40px" }}
         />
         <Input
           type="text"
