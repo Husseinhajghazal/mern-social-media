@@ -254,7 +254,7 @@ const getProfile = async (req, res, next) => {
   ids.push(profileId);
 
   let followed = false;
-  const existingFollow = user.followings.filter(
+  const existingFollow = await user.followings.filter(
     (id) => id.toString() === profileId
   );
 
@@ -309,10 +309,10 @@ const getProfile = async (req, res, next) => {
       image: user.image,
     }));
 
-  const profilePosts = profile.posts.reverse().map((post) => {
+  const profilePosts = profile.posts.reverse().map(async (post) => {
     let liked = false;
 
-    const like = post.likedBy.filter((id) => id.toString() === userId);
+    const like = await post.likedBy.filter((id) => id.toString() === userId);
 
     if (like.length > 0) {
       liked = true;
@@ -359,12 +359,6 @@ const follow = async (req, res, next) => {
     return next(new NewError("Could not find user for this id.", 404));
   }
 
-  const exist = user.followings.filter((id) => id !== profileId);
-
-  if (exist.length > 0) {
-    return next(new NewError("You are following him already.", 404));
-  }
-
   try {
     user.followings.push(profileId);
     await user.save();
@@ -396,14 +390,6 @@ const unfollow = async (req, res, next) => {
 
   if (!user) {
     return next(new NewError("Could not find user for this id.", 404));
-  }
-
-  const exist = user.followings.filter((id) => id !== profileId);
-
-  if (exist.length === 0) {
-    return next(
-      new NewError("You aren't following him so you can't unfollow him.", 404)
-    );
   }
 
   try {
