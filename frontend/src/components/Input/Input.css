@@ -1,0 +1,52 @@
+.input .text {
+  width: 100%;
+  border: 2px solid #bfbfbf;
+  background-color: transparent !important;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+}
+.input .text:hover {
+  border: 2px solid #00acee;
+}
+.input .text:focus {
+  outline: none;
+  border: 2px solid #00acee;
+}
+.input .text.false {
+  border-color: #ee0000;
+}
+.input .text.false:hover {
+  border: 2px solid #ee0000;
+}
+.input .text.false:focus {
+  outline: none;
+  border-bottom: 2px solid #ee0000;
+}
+.input p {
+  font-size: 13px;
+  color: #ee0000;
+}
+.input .textarea {
+  width: 100%;
+  border: 2px solid #bfbfbf;
+  background-color: transparent !important;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+}
+.input .textarea:hover {
+  border: 2px solid #00acee;
+}
+.input .textarea:focus {
+  outline: none;
+  border: 2px solid #00acee;
+}
+.input .textarea.false {
+  border-color: #ee0000;
+}
+.input .textarea.false:hover {
+  border: 2px solid #ee0000;
+}
+.input .textarea.false:focus {
+  outline: none;
+  border-bottom: 2px solid #ee0000;
+}

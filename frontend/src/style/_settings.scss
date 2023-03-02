@@ -1,0 +1,29 @@
+@mixin mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+.settings-page {
+  height: 100vh;
+
+  form {
+    max-width: 1000px;
+    width: 100%;
+
+    .satir {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 20px;
+
+      @include mobile {
+        grid-template-columns: auto;
+      }
+    }
+
+    button {
+      margin: auto;
+      width: 150px;
+    }
+  }
+}
